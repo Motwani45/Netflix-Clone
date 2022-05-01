@@ -191,6 +191,8 @@ public class PaymentGateway extends AppCompatActivity implements PaymentResultLi
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
+
+                    Log.d("Signupsucces", "Sign Up is success due to :");
                     userid = auth.getCurrentUser().getUid();
                     DocumentReference reference = firestore.collection("Users").document(userid);
                     Map<String, Object> user = new HashMap<>();

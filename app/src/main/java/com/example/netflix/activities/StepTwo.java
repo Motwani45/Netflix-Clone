@@ -19,10 +19,12 @@ import com.example.netflix.databinding.ActivityStepTwoBinding;
 import com.example.netflix.databinding.ToolbarsteponeBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
 
 public class StepTwo extends AppCompatActivity {
     String planname, price, planformatofcost, useremail, password;
@@ -85,7 +87,19 @@ public class StepTwo extends AppCompatActivity {
                                 Toast.makeText(StepTwo.this, "Email-id already in use", Toast.LENGTH_SHORT).show();
                                 auth.signOut();
                             } else {
-                                start(2000);
+                                auth.createUserWithEmailAndPassword(useremail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<AuthResult> task) {
+                                       if(task.isSuccessful()){
+                                           FirebaseUser user=task.getResult().getUser();
+
+                                       }
+                                       else{
+                                           Toast.makeText(StepTwo.this, "Problem with signing up", Toast.LENGTH_SHORT).show();
+                                       }
+                                    }
+                                });
+
                             }
                         }
                     });
