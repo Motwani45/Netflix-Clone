@@ -4,20 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
-    tools:context=".mainscreens.MainScreen">
-    <include layout="@layout/mainscreentoolbar"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mainrecyclerview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="50dp"
-        />
-
+    tools:context=".mainscreens.Search">
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:id="@+id/bottomnaviagtionbar"
@@ -30,8 +17,6 @@
         app:menu="@menu/bottomnavigationbar"
         app:itemIconTint="@drawable/itemselected"
         />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

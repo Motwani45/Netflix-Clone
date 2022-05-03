@@ -12,6 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Netflix">
         <activity
+            android:name=".mainscreens.VideoPlayer"
+            android:exported="false" />
+        <activity
+            android:name=".mainscreens.Search"
+            android:exported="false" />
+        <activity
+            android:name=".mainscreens.Settings"
+            android:exported="false" />
+        <activity
+            android:name=".mainscreens.Tvseries"
+            android:exported="false" />
+        <activity
+            android:name=".mainscreens.Movies"
+            android:exported="false" />
+        <activity
             android:name=".activities.PaymentOverdue"
             android:exported="false" />
         <activity

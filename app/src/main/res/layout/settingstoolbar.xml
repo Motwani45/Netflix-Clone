@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarstep3"
+        android:id="@+id/toolbarmainscreen"
         android:layout_width="match_parent"
         android:layout_height="55dp"
-        android:background="@color/white"
+        android:background="@color/black"
         android:theme="@style/Theme.AppCompat.Light.Dialog"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -17,7 +17,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:background="@color/black">
 
             <ImageView
                 android:id="@+id/netflixlogo"
@@ -30,14 +30,15 @@
 
 
             <TextView
-                android:id="@+id/signoutstepthree"
+                android:id="@+id/settingstooltext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
                 android:layout_marginTop="15dp"
-                android:layout_marginEnd="40dp"
-                android:text="SIGN OUT"
-                android:textColor="@color/black"
+                android:layout_toRightOf="@id/netflixlogo"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="20dp"
+                android:text="SETTINGS"
+                android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="bold" />
         </RelativeLayout>

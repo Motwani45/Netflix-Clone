@@ -1,6 +1,17 @@
 buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
     dependencies {
         classpath 'com.google.gms:google-services:4.3.10'
+        if (JavaVersion.current().isJava8Compatible()) {
+            allprojects {
+                tasks.withType(Javadoc) {
+                    options.addStringOption('Xdoclint:none', '-quiet')
+                }
+            }
+        }
     }
 }
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
@@ -8,6 +19,7 @@ plugins {
     id 'com.android.application' version '7.1.2' apply false
     id 'com.android.library' version '7.1.2' apply false
 }
+
 
 task clean(type: Delete) {
     delete rootProject.buildDir
