@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Netflix">
         <activity
+            android:name=".mainscreens.MovieDetails"
+            android:exported="false" />
+        <activity
             android:name=".mainscreens.VideoPlayer"
             android:exported="false" />
         <activity
