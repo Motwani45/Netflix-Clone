@@ -27,7 +27,7 @@ public class VideoPlayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding=ActivityVideoPlayerBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
+//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR);
         getSupportActionBar().hide();
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);

@@ -3,7 +3,12 @@ package com.example.netflix.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -20,6 +25,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Timer;
@@ -43,7 +49,26 @@ public class SplashScreen extends AppCompatActivity {
         setContentView(binding.getRoot());
         auth = FirebaseAuth.getInstance();
         firestore = FirebaseFirestore.getInstance();
-        verifyDate();
+        ConnectivityManager connectivityManager=(ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo=connectivityManager.getActiveNetworkInfo();
+        if(networkInfo==null||!networkInfo.isConnected()||!networkInfo.isAvailable()){
+            AlertDialog.Builder builder= new AlertDialog.Builder(this);
+            builder.setTitle("No Internet Connection");
+            builder.setMessage("Please turn on your internet connection to continue.");
+            builder.setPositiveButton("Retry", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    recreate();
+                }
+            });
+            AlertDialog alertDialog=builder.create();
+            alertDialog.show();
+            alertDialog.setCanceledOnTouchOutside(false);
+        }
+        else{
+            verifyDate();
+        }
+
     }
 
     public void verifyDate() {
