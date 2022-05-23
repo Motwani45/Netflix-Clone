@@ -17,7 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".mainscreens.VideoPlayer"
-            android:screenOrientation="landscape"
+            android:configChanges="orientation|screenSize|layoutDirection"
             android:exported="false" />
         <activity
             android:name=".mainscreens.Search"
