@@ -12,37 +12,72 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Netflix">
         <activity
-            android:name=".activities.PaymentOverdue"
+            android:name=".mainscreens.MovieDetails"
+            android:screenOrientation="portrait"
             android:exported="false" />
+        <activity
+            android:name=".mainscreens.VideoPlayer"
+            android:configChanges="orientation|screenSize|layoutDirection"
+            android:exported="false" />
+        <activity
+            android:name=".mainscreens.Search"
+            android:screenOrientation="portrait"
+            android:exported="false" />
+        <activity
+            android:name=".mainscreens.Settings"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mainscreens.Tvseries"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".mainscreens.Movies"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activities.PaymentOverdue"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.PaymentGateway"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.StepThree"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.StepTwo"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.FinishUpAccount"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.ChooseYourPlan"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.StepOne"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".mainscreens.MainScreen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SwipeScreen"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SignInActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activities.SplashScreen"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

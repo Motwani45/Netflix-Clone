@@ -10,4 +10,7 @@
     <color name="red">#E80C0C</color>
     <color name="activedots">#E80C0C</color>
     <color name="inactivedots">#9E9C9C</color>
+    <color name="itemselected">#FFFFFFFF</color>
+    <color name="itemunselected">#555454</color>
+    <color name="bottomnavigationbar">#7C7C7C</color>
 </resources>

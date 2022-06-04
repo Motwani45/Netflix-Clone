@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
@@ -12,11 +12,7 @@
             android:id="@+id/toolbarswipescreen"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:theme="@style/Theme.AppCompat.Light.Dialog"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:theme="@style/Theme.AppCompat.Light.Dialog">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -68,39 +64,37 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpagerswipescreen"
             android:layout_width="match_parent"
-            android:layout_height="480dp"
-            android:layout_marginTop="70dp"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="15dp"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/swipedots"
+            android:layout_below="@id/toolbarswipescreen" />
 
         <LinearLayout
             android:id="@+id/swipedots"
-            android:layout_width="340dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="604dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/getstarted"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center_horizontal|center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            android:orientation="horizontal" />
 
-        </LinearLayout>
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/getstarted"
             android:layout_width="match_parent"
             android:layout_height="62dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
             android:backgroundTint="@color/red"
             android:text="GET STARTED"
             android:textColor="@color/white"
             android:textSize="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/swipedots" />
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
 </merge>

@@ -5,11 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".mainscreens.MainScreen">
-    <include layout="@layout/mainscreentoolbar"/>
-
+    tools:context=".mainscreens.Tvseries">
+    <include layout="@layout/tvseriestoolbar"/>
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/mainrecyclerview"
+        android:id="@+id/tvseriesrecyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,8 +29,5 @@
         app:menu="@menu/bottomnavigationbar"
         app:itemIconTint="@drawable/itemselected"
         />
-
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

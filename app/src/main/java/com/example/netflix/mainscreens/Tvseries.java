@@ -1,5 +1,9 @@
 package com.example.netflix.mainscreens;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,17 +13,11 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.netflix.R;
 import com.example.netflix.adapters.MainRecyclerAdapter;
-import com.example.netflix.databinding.ActivityMainScreenBinding;
-import com.example.netflix.databinding.MainscreentoolbarBinding;
+import com.example.netflix.databinding.ActivityTvseriesBinding;
 import com.example.netflix.models.AllCategory;
 import com.example.netflix.retrofit.RetrofitClient;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,54 +25,38 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class MainScreen extends AppCompatActivity {
-    ActivityMainScreenBinding binding;
+public class Tvseries extends AppCompatActivity {
+    ActivityTvseriesBinding binding;
     MainRecyclerAdapter adapter;
     List<AllCategory> allCategories;
-    MainscreentoolbarBinding mainscreentoolbarBinding;
     Menu menu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        binding=ActivityMainScreenBinding.inflate(getLayoutInflater());
-        mainscreentoolbarBinding=MainscreentoolbarBinding.bind(binding.getRoot());
-        menu=binding.bottomnaviagtionbar.getMenu();
-//        menu.getItem(0).setCheckable(true);
+        binding=ActivityTvseriesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        mainscreentoolbarBinding.moviestooltext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainScreen.this,Movies.class);
-                startActivity(intent);
-            }
-        });
-        mainscreentoolbarBinding.tvseriestooltext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainScreen.this,Tvseries.class);
-                startActivity(intent);
-            }
-        });
+        binding.bottomnaviagtionbar.getMenu().getItem(0).setChecked(false);
         binding.bottomnaviagtionbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int itemid=item.getItemId();
                 switch (itemid){
                     case R.id.homeicon:
+                        Intent intent2=new Intent(Tvseries.this,MainScreen.class);
+                        startActivity(intent2);
                         break;
                     case R.id.searchicon:
-                        Intent intent=new Intent(MainScreen.this,Search.class);
+                        Intent intent=new Intent(Tvseries.this,Search.class);
                         startActivity(intent);
                         break;
                     case R.id.settingsicon:
-                        Intent intent1=new Intent(MainScreen.this,Settings.class);
+                        Intent intent1=new Intent(Tvseries.this,Settings.class);
                         startActivity(intent1);
                         break;
                 }
@@ -104,9 +86,9 @@ public class MainScreen extends AppCompatActivity {
         }
     }
     public void setMainRecyclerView(List<AllCategory> allCategories){
-        binding.mainrecyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
-        adapter=new MainRecyclerAdapter(MainScreen.this,allCategories);
-        binding.mainrecyclerview.setAdapter(adapter);
+        binding.tvseriesrecyclerview.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
+        adapter=new MainRecyclerAdapter(Tvseries.this,allCategories);
+        binding.tvseriesrecyclerview.setAdapter(adapter);
     }
 
     private void getAllMovieData() {
@@ -122,7 +104,7 @@ public class MainScreen extends AppCompatActivity {
 
                     @Override
                     public void onError(Throwable e) {
-                        Toast.makeText(MainScreen.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Tvseries.this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

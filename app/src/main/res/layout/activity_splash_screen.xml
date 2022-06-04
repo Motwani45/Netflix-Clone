@@ -8,8 +8,9 @@
     tools:context=".activities.SplashScreen">
 
     <ImageView
-        android:layout_width="291dp"
-        android:layout_height="71dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:padding="5dp"
         android:src="@drawable/netflix_logo_full_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
