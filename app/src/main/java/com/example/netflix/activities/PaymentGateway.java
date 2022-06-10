@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
@@ -176,7 +177,22 @@ public class PaymentGateway extends AppCompatActivity implements PaymentResultLi
                     x = false;
                 }
                 if (x) {
-                    startPayment();
+                    auth.signInWithEmailAndPassword(useremail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                FirebaseUser user=task.getResult().getUser();
+                                if(user.isEmailVerified()){
+                                    auth.signOut();
+                                    startPayment();
+                                }
+                                else{
+                                    new AlertDialog.Builder(PaymentGateway.this).setTitle("EMAIL VERIFICATION").setMessage("Plaese Verify Your Email First....").setCancelable(true).create().show();
+                                }
+                            }
+                        }
+                    });
+
                 }
             }
         });
@@ -186,12 +202,11 @@ public class PaymentGateway extends AppCompatActivity implements PaymentResultLi
     public void onPaymentSuccess(String razorpayPaymentID) {
         progressDialog.show();
         Toast.makeText(this, "Payment Successful: " + razorpayPaymentID, Toast.LENGTH_SHORT).show();
-        auth.createUserWithEmailAndPassword(useremail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        auth.signInWithEmailAndPassword(useremail,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 progressDialog.dismiss();
                 if (task.isSuccessful()) {
-
                     Log.d("Signupsucces", "Sign Up is success due to :");
                     userid = auth.getCurrentUser().getUid();
                     DocumentReference reference = firestore.collection("Users").document(userid);
